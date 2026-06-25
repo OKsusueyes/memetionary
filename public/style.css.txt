@@ -1,0 +1,183 @@
+:root {
+    --bg-desktop: #008080; /* Win98 전형적인 청록색 배경 */
+    --win-gray: #c0c0c0;
+    --win-blue: #000080;
+    --win-light-blue: #1084d0;
+    --text-dark: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: '굴림', Gulim, 'Malgun Gothic', sans-serif;
+}
+
+body {
+    background-color: var(--bg-desktop);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    background: var(--win-gray);
+    border: 3px solid;
+    border-color: #ffffff #5a5a5a #5a5a5a #ffffff;
+    width: 100%;
+    max-width: 850px;
+    padding: 15px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+header {
+    background: linear-gradient(90deg, var(--win-blue), var(--win-light-blue));
+    color: white;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+}
+
+header h1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+header p {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.control-panel, .preview-panel {
+    flex: 1;
+    min-width: 320px;
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: #5a5a5a #ffffff #ffffff #5a5a5a;
+    padding: 20px;
+}
+
+.preview-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-panel h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 6px;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #5a5a5a #ffffff #ffffff #5a5a5a;
+    font-size: 14px;
+    outline: none;
+}
+
+input[type="color"] {
+    width: 60px;
+    height: 35px;
+    border: 2px solid;
+    border-color: #5a5a5a #ffffff #ffffff #5a5a5a;
+    cursor: pointer;
+    background: transparent;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: block;
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: inset 1px 1px 0px #fff;
+}
+
+.custom-file-upload:active {
+    border-color: #000000 #ffffff #ffffff #000000;
+    padding: 11px 9px 9px 11px;
+}
+
+.btn-download {
+    display: block;
+    width: 100%;
+    background: var(--win-gray);
+    color: #000;
+    border: 2px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 0px #fff;
+}
+
+.btn-download:active:not(:disabled) {
+    border-color: #000000 #ffffff #ffffff #000000;
+}
+
+.btn-download:disabled {
+    color: #808080;
+    cursor: not-allowed;
+    border-color: #d0d0d0;
+    box-shadow: none;
+}
+
+.canvas-container {
+    background: #808080;
+    padding: 10px;
+    border: 2px solid;
+    border-color: #5a5a5a #ffffff #ffffff #5a5a5a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #000;
+    background: #ffffff;
+}
+
+footer {
+    margin-top: 15px;
+    text-align: right;
+    font-size: 11px;
+    color: #404040;
+}
