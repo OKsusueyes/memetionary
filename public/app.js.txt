@@ -1,0 +1,61 @@
+const aiConvertBtn = document.getElementById('aiConvertBtn');
+const loadingText = document.getElementById('loadingText');
+
+// 이미지 업로드 시 AI 변환 버튼도 활성화
+imageLoader.addEventListener('change', (e) => {
+    if(e.target.files.length === 0) return;
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        uploadedImage = new Image();
+        uploadedImage.onload = function() {
+            drawSticker();
+            downloadBtn.disabled = false;
+            aiConvertBtn.disabled = false; // AI 버튼 활성화!
+        }
+        uploadedImage.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+// AI 픽셀 변환 버튼 클릭 이벤트
+aiConvertBtn.addEventListener('click', async () => {
+    const file = imageLoader.files[0];
+    if (!file) return;
+
+    // 로딩 시작
+    aiConvertBtn.disabled = true;
+    loadingText.style.display = 'block';
+
+    const formData = new FormData();
+    formData.append('photo', file);
+    
+    // 개발매니절이 짜준 프롬프트 🚀
+    const prompt = "첨부된 사진을 참고해, 128x128 픽셀 아트 스타일 캐릭터로 변환. 인물의 주요 외형, 헤어스타일, 옷차림, 표정 등은 사진을 충실히 반영. 도트 아트 느낌을 강조하고, 배경은 투명";
+    formData.append('prompt', prompt);
+
+    try {
+        // 우리 서버에 AI 변환 요청하기!
+        const response = await fetch('/api/pixelate', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            // 서버에서 변환된 픽셀 이미지 URL을 받아와서 띠부실에 적용!
+            uploadedImage = new Image();
+            uploadedImage.onload = function() {
+                drawSticker(); // 다시 그리기!
+            }
+            uploadedImage.src = data.pixelImageUrl; 
+        } else {
+            alert('AI 변환 실패 ㅠㅠ 다시 시도해봐!');
+        }
+    } catch (error) {
+        console.error('에러:', error);
+    } finally {
+        // 로딩 끝
+        aiConvertBtn.disabled = false;
+        loadingText.style.display = 'none';
+    }
+});
