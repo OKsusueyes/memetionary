@@ -1,14 +1,13 @@
 {
-  "name": "meme-dictionary",
+  "name": "ddibu-maker",
   "version": "1.0.0",
-  "description": "늙은이를 위한 밈-과사전 레트로 웹앱",
+  "description": "AI 띠부실 스티커 메이커",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
-  },
-  "author": "인영님 & 개발매니절",
-  "license": "ISC"
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1"
+  }
 }
