@@ -33,7 +33,7 @@ app.post('/api/pixelate', upload.single('photo'), async (req, res) => {
         
         // 🔥 3. 사진을 수정해주는 유명한 오픈소스 모델(InstructPix2Pix)에게 지시!
         const responseBlob = await hf.imageToImage({
-            model: 'timbrooks/instruct-pix2pix', 
+            model: 'runwayml/stable-diffusion-v1-5', 
             inputs: imageBlob,
             parameters: {
                 prompt: "Convert this image into a cute 8-bit retro pixel art, masterpiece, high quality.",
