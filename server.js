@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 🚨 발급받은 OpenAI API 키를 여기에 넣어주세요!
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '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';
 
 // OpenAI 연결 설정
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
