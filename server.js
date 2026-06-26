@@ -45,7 +45,7 @@ app.post('/api/pixelate', upload.single('photo'), async (req, res) => {
 
         // AI 서버로 발송
         const response = await axios.post(
-            'https://api.stability.ai/v1/generation/stable-diffusion-v1-5/image-to-image',
+            'https://api.stability.ai/v1/generation/stable-diffusion-v1-6/image-to-image',
             formData,
             {
                 headers: {
